@@ -4,6 +4,8 @@
 \usepackage[margin=1cm,footskip=0.25cm]{geometry}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{multirow} % Added for multirow cells in tables
+\usepackage{adjustbox} % Added for resizing tables
 
 
 \begin{document}
@@ -142,8 +144,131 @@ In diesem Beispiel sind $x_1$ und $x_3$ die führenden Unbekannten, während $x_
 
 \section*{Lösbarkeit von LGS}
 \begin{itemize}
-    \item \textbf{Eindeutige Lösung:} Wenn die Matrix in Zeilenstufenform keine freien Unbekannten hat.
-    \item \textbf{Unendlich viele Lösungen:} Wenn die Matrix in Zeilenstufenform mindestens eine freie Unbekannte hat.
-    \item \textbf{Keine Lösung:} Wenn die Matrix in Zeilenstufenform eine Zeile der Form \(0 = c\) (mit \(c \neq 0\)) enthält.
+    \item \textbf{Eindeutige Lösung:} Wenn die Matrix in Zeilenstufenform keine freien Unbekannten hat. (rg(A) = Anzahl der Unbekannten (n))
+    \item \textbf{Unendlich viele Lösungen:} Wenn die Matrix in Zeilenstufenform mindestens eine freie Unbekannte hat. ($rg(A) <  n$)
+    \item \textbf{Keine Lösung:} Wenn die Matrix in Zeilenstufenform eine Zeile der Form \(0 = c\) (mit \(c \neq 0\)) enthält. ($rg(A) \neq rg(A|\vec{c})$)
 \end{itemize}
+
+\section*{Vektorgeometrie}
+\begin{minipage}[t]{0.45\textwidth}
+    \subsection*{Einheitsvektor}
+    Ein Einheitsvektor ist ein Vektor mit der Länge/Betrag 1.
+
+    \subsection*{Koliniare Vektoren}
+    Zwei Vektoren \( \vec{a} \) und \( \vec{b} \) sind kolinear, wenn sie in die gleiche Richtung zeigen oder entgegengesetzt sind, bzw. das Vektorprodukt 0 ergibt. Mathematisch ausgedrückt: \( \vec{a} = k \cdot \vec{b} \) für ein Skalar \( k \).
+    Der Nullvektor ist kolinear zu jedem Vektor. \( \vec{a} \times \vec{b} = \vec{0} \)
+
+    \subsection*{Komplanare Vektoren}
+    Drei Vektoren \( \vec{a}, \vec{b}, \vec{c} \) sind komplanar, wenn sie in einer Ebene liegen. Dies ist der Fall, wenn das Skalarprodukt der Kreuzprodukte Null ist: \( \vec{a} \times \vec{b} \cdot \vec{c} = 0 \).
+
+    \subsection*{Orthogonale Projektion}
+    Die orthogonale Projektion eines Vektors \( \vec{a} \) auf einen Vektor \( \vec{b} \) wird berechnet als:
+    \begin{equation*}
+        \vec{b}_{\vec{a}} = \frac{\vec{a} \cdot \vec{b}}{|\vec{a}|^2} \cdot \vec{a} 
+        \quad \Leftrightarrow \quad 
+        |\vec{b}_{\vec{a}}| = \frac{|\vec{a} \cdot \vec{b}|}{|\vec{a}|}
+    \end{equation*}
+    Die Projektion gibt den Anteil von \( \vec{a} \) in Richtung von \( \vec{b} \) an.
+
+    \subsection*{Vektorprodukt}
+    Das Vektorprodukt (Kreuzprodukt) zweier Vektoren \( \vec{a} = (a_1, a_2, a_3) \) und \( \vec{b} = (b_1, b_2, b_3) \) wird berechnet als:
+    \begin{equation*}
+    \vec{a} \times \vec{b} = 
+    \includegraphics[scale=0.3]{images/vektorprodukt.png}
+    \end{equation*}
+    \begin{equation*}
+        |\vec{a} \times \vec{b}| = |\vec{a}| \cdot |\vec{b}| \cdot \sin(\theta)
+    \end{equation*}
+    Das Vektorprodukt ist ein Vektor, der orthogonal zu beiden Ausgangsvektoren steht. Die Länge des Vektorprodukts entspricht der Fläche des Parallelogramms, das von den beiden Vektoren aufgespannt wird.
+
+    \subsubsection*{Eigenschaften des Vektorprodukts}
+    \begin{itemize}
+        \item \( \vec{a} \times \vec{b} = -(\vec{b} \times \vec{a}) \) (Antisymmetrie)
+        \item Distributivität: \( \vec{a} \times (\vec{b} + \vec{c}) = \vec{a} \times \vec{b} + \vec{a} \times \vec{c} \)
+        \item Gemischtes Assoziativ-Gesetz: \( \lambda \cdot (\vec{a} \times \vec{b}) = (\lambda \cdot \vec{a}) \times \vec{b} = \vec{a} \times (\lambda \cdot \vec{b}) \)
+    \end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+    \subsection*{Betrag eines Vektors}
+    Der Betrag eines Vektors \( \vec{a} = (a_1, a_2, a_3) \) wird berechnet als:
+    \begin{equation*}
+        |\vec{a}| = \sqrt{a_1^2 + a_2^2 + a_3^2}
+    \end{equation*}
+
+
+    \subsection*{Basisvektoren}
+    Eine Basis eines Vektorraums ist eine Menge von Vektoren, die linear unabhängig sind und den gesamten Raum aufspannen. Jeder Vektor im Raum kann als Linearkombination dieser Basisvektoren dargestellt werden.
+    
+    \subsection*{Skalarprodukt}
+    Das Skalarprodukt zweier Vektoren \( \vec{a} = (a_1, a_2, a_3) \) und \( \vec{b} = (b_1, b_2, b_3) \) wird berechnet als:
+    \begin{equation*}
+        \vec{a} \cdot \vec{b} = a_1 b_1 + a_2 b_2 + a_3 b_3
+    \end{equation*}
+    Das Skalarprodukt ist ein Maß für die Ähnlichkeit zweier Vektoren. Es ist null, wenn die Vektoren orthogonal zueinander sind.
+    \subsection*{Winkel zwischen Vektoren}
+    Der Winkel \( \theta \) zwischen zwei Vektoren \( \vec{a} \) und \( \vec{b} \) kann mit dem Skalarprodukt berechnet werden:
+    \begin{equation*}
+        \cos(\theta) = \frac{\vec{a} \cdot \vec{b}}{|\vec{a}| |\vec{b}|} 
+        \quad \Leftrightarrow \quad 
+        \theta = \arccos\left(\frac{\vec{a} \cdot \vec{b}}{|\vec{a}| |\vec{b}|}\right) 
+    \end{equation*}
+
+    \subsection*{Gegenseitige Lage von Geraden im Raum}
+    \begin{center}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    \multicolumn{2}{|c|}{} & \multicolumn{2}{c|}{Gibt es einen gemeinsamen Punkt?} \\
+    \cline{3-4}
+    \multicolumn{2}{|c|}{} & ja & nein \\
+    \hline
+    \multirow{2}{*}{Sind die Richtungsvektoren kollinear?} & ja & identisch & echt parallel \\
+    \cline{2-4}
+    & nein & schneidend & windschief \\
+    \hline
+    \end{tabular}%
+    }
+    \end{center}
+    \subsection*{Abstand zwischen einer Geraden und einem Punkt}
+    Der Abstand \( d \) zwischen einer Geraden \( g \) und einem Punkt \( P \) kann mithilfe der Fläche des Parallelogramms berechnet werden, 
+    das von den Richtungsvektoren der Geraden und dem Vektor vom Punkt auf die Gerade aufgespannt wird:
+    \begin{equation*}
+        \overrightarrow{PA} = \vec{P} - \vec{A}
+    \end{equation*}
+    \begin{equation*}
+        F = |\overrightarrow{PA} \times \vec{a}|
+        \quad \text{(Fläche des Parallelogramms)}
+    \end{equation*}
+    \begin{equation*}
+        l = \frac{F}{|\vec{a}|}
+        \quad \text{(Länge der Geraden)}
+    \end{equation*}
+\end{minipage}
+
+\begin{minipage}[t]{0.45\textwidth}
+    \subsection*{Koordinatendarstellung von Geraden in der Ebene}
+    Eine Gerade in der Ebene kann durch die Gleichung
+    \begin{equation*}
+        g: ax + by + c = 0
+    \end{equation*}
+    dargestellt werden.
+    \subsubsection*{Umrechnung Parameterdarstellung $\to$ Koordinatendarstellung}
+    \begin{equation*}
+        \vec{r}(A) = \begin{pmatrix}
+        x \\
+        y
+        \end{pmatrix} = \vec{r}(P) + \lambda \cdot \vec{a}
+    \end{equation*}
+    Daraus lässt sich ein Gleichungssystem ableiten
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+    \subsubsection*{Umrechnung Koordinatendarstellung $\to$ Parameterdarstellung}
+    Wir bestimmen zwei beliebige Punkte auf $g$, indem wir die $x$-Koordinaten frei wählen und die
+zugehörigen $y$-Koordinaten aus der Koordinatendarstellung von $g$ berechnen. Aus diesen beiden
+Punkten können wir dann eine Parameterdarstellung von $g$ gewinnen.
+\end{minipage}
+
+\section*{Ebenen}
 \end{document}

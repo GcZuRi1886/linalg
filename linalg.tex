@@ -7,7 +7,6 @@
 \usepackage{multirow} % Added for multirow cells in tables
 \usepackage{adjustbox} % Added for resizing tables
 
-
 \begin{document}
 \begin{center}
 \textbf{\LARGE Lineare Algebra}
@@ -402,4 +401,66 @@ Punkten können wir dann eine Parameterdarstellung von $g$ gewinnen.
     \subsubsection*{schneidend}
     In allen anderen Fällen schneiden sich die Ebenen. Der Schnittpunkt kann durch das Lösen eines LGS gefunden werden.
 \end{minipage}
+
+\section*{Reeler Vektorraum}
+\begin{minipage}[t]{0.45\textwidth}
+    \subsection*{Definition}
+    Ein reeller Vektorraum ist eine Menge von Vektoren, die unter Addition und Skalarmultiplikation abgeschlossen ist. 
+    Die Vektoren können addiert und mit reellen Zahlen skaliert werden, wobei die folgenden Axiome erfüllt sein müssen:
+    \begin{itemize}
+        \item Assoziativität der Addition
+        \item Kommutativität der Addition
+        \item Existenz eines Nullvektors
+        \item Existenz eines inversen Vektors
+        \item Distributivität der Skalarmultiplikation
+        \item Assoziativität der Skalarmultiplikation
+        \item Identitätselement der Skalarmultiplikation
+        \item Wenn ich 2 Elemente in V addiere, muss das Ergebnis auch in V sein.
+        \item Wenn ich ein Element in V mit einem Skalar multipliziere, muss das Ergebnis auch in V sein.
+    \end{itemize}
+
+    \subsection*{Umrechnung von Komponentendarstellungen}
+    \subsubsection*{Basis $\mathcal{B} \to$ Basis $\mathcal{S}$}
+    Um von einer Basis \( \mathcal{B} \)  zu einer Basis \( \mathcal{S} \) zu wechseln, verwenden wir die Umrechnungsformel:
+    \begin{equation*}
+        \vec{a}_{\mathcal{S}} = v_1 \cdot \vec{b}_1 + v_2 \cdot \vec{b}_2 + \ldots + v_n \cdot \vec{b}_n
+    % \end{pmatrix} 
+    \end{equation*}
+    $b_{1 \ldots b_n}$ sind die Basisvektoren der Basis $\mathcal{B}$, $v_1 \ldots v_n$ sind die Komponenten des Vektors in der Basis $\mathcal{B}$.
+
+    \subsubsection*{Basis $\mathcal{S} \to$ Basis $\mathcal{B}$}
+    Um von einer Basis \( \mathcal{S} \) zu einer Basis \( \mathcal{B} \) zu wechseln, nutzen wir ein LGS:
+    \begin{equation*}
+        \vec{a}_{\mathcal{B}} = w_1 \cdot \vec{s}_1 + w_2 \cdot \vec{s}_2 + \ldots + w_n \cdot \vec{s}_n
+    \end{equation*}
+    $s_{1 \ldots s_n}$ sind die Basisvektoren der Basis $\mathcal{B}$, $w_1 \ldots w_n$ sind die Komponenten des Vektors in der Basis $\mathcal{S}$.
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+    \subsection*{Unterräume}
+    Ein Unterraum eines Vektorraums ist eine Teilmenge, die selbst ein Vektorraum ist. Er muss die Null enthalten und abgeschlossen unter Addition und Skalarmultiplikation sein.
+    
+    \subsection*{Basis und Dimension}
+    Eine Basis eines Vektorraums ist eine Menge von linear unabhängigen Vektoren, die den gesamten Raum aufspannen. Die Dimension des Vektorraums ist die Anzahl der Vektoren in einer Basis.
+
+    \subsection*{Erzegendensyteme}
+    Ein Erzeugendensystem eines Vektorraums ist eine Menge von Vektoren, deren Linearkombinationen den gesamten Raum aufspannen. Es kann mehr Vektoren enthalten als eine Basis, aber nicht weniger.
+    
+    Die folgenden Aussagen sind äquivalent:
+    \begin{itemize}
+        \item Die Vektoren $b_1, b_2, \ldots, b_n$ bilden ein Erzeugendensystem von $\mathbb{R}^n$.
+        \item Das LGS $A \cdot \vec{x} = \vec{b}$ hat für jedes $\vec{b} \in \mathbb{R}^n$ eine Lösung.
+        \item Die Matrix $A$ hat vollen Rang, d.h. $rg(A) = n$.
+    \end{itemize}
+
+    \subsection*{Lineare Unabhängigkeit}
+    Eine Menge von Vektoren \( \vec{v}_1, \vec{v}_2, \ldots, \vec{v}_n \) ist linear unabhängig, wenn die Gleichung
+    \begin{equation*}
+        c_1 \vec{v}_1 + c_2 \vec{v}_2 + \ldots + c_n \vec{v}_n = 0
+    \end{equation*}
+    nur die triviale Lösung \( c_1 = c_2 = \ldots = c_n = 0 \) hat. Andernfalls sind die Vektoren linear abhängig.
+\end{minipage}
+
+
 \end{document}

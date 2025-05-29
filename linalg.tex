@@ -462,5 +462,254 @@ Punkten können wir dann eine Parameterdarstellung von $g$ gewinnen.
     nur die triviale Lösung \( c_1 = c_2 = \ldots = c_n = 0 \) hat. Andernfalls sind die Vektoren linear abhängig.
 \end{minipage}
 
+\pagebreak
 
+\section*{Lineare Abbildungen}
+\begin{minipage}[t]{0.45\textwidth}
+    \subsection*{Definition}
+    Eine lineare Abbildung \( f: V \to W \) zwischen zwei Vektorräumen \( V \) und \( W \) ist eine Funktion, die die folgenden Eigenschaften erfüllt:
+    \begin{itemize}
+        \item \( f(\vec{u} + \vec{v}) = f(\vec{u}) + f(\vec{v}) \) für alle \( \vec{u}, \vec{v} \in V \)
+        \item $\lambda \cdot \vec{v} = \lambda \cdot f(\vec{v})$ für alle \( c \in \mathbb{R} \) und \( \vec{v} \in V \)
+    \end{itemize}
+
+    \subsection*{Kern und Bild}
+    Der Kern \( \ker(f) \) einer linearen Abbildung \( f \) ist die Menge aller Vektoren \( \vec{v} \in V \), für die \( f(\vec{v}) = \vec{0} \). (z-Achse)
+    
+    Das Bild \( \text{Im}(f) \) ist die Menge aller Vektoren \( \vec{w} \in W \), die als Bild eines Vektors aus \( V \) unter \( f \) entstehen, d.h. \( \text{Im}(f) = \{ f(\vec{v}) | \vec{v} \in V \} \). (xy-Ebene)
+    \newline
+    \newline
+    \textbf{$m \times n$ Matrix $f$ }
+    \begin{equation*}
+        dim(ker(f)) + dim(Im(f)) = n
+    \end{equation*}
+
+    \subsection*{Basenwechsel}
+    Wenn \( \mathcal{B} \) eine Basis von \( V \) und \( \mathcal{S} \) eine Basis von \( W \) ist, dann kann die lineare Abbildung \( f \) in Bezug auf diese Basen dargestellt werden.
+
+    \subsubsection*{$\mathcal{B} \to \mathcal{S}$}
+    Um die Abbildung \( f \) von der Basis \( \mathcal{B} \) zu \( \mathcal{S} \) zu beschreiben, verwenden wir die Abbildungsmatrix \( A \):
+    \begin{equation*}
+        {}_{\mathcal{S}}T_{\mathcal{B}} = \begin{pmatrix}
+            | & | & & | \\
+            f(\vec{b}_1)_{\mathcal{S}} & f(\vec{b}_2)_{\mathcal{S}} & \ldots & f(\vec{b}_n)_{\mathcal{S}} \\
+            | & | & & |
+        \end{pmatrix}
+    \end{equation*}
+
+    \subsubsection*{$\mathcal{S} \to \mathcal{B}$}
+    Das ist die Inverse Abbildung, die die Abbildung von der Basis \( \mathcal{S} \) zurück zur Basis \( \mathcal{B} \) beschreibt. Sie wird ebenfalls durch eine Matrix \( B \) dargestellt:
+    \begin{equation*}
+        {}_{\mathcal{B}}T_{\mathcal{S}} = {}_{\mathcal{S}}T_{\mathcal{B}}^{-1}
+    \end{equation*}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+    \subsection*{Abbildungsmatrix}
+    Die Abbildungsmatrix \( A \) einer linearen Abbildung \( f \) bezüglich der Basen \( \mathcal{B} \) von \( V \) und \( \mathcal{S} \) von \( W \) ist die Matrix, 
+    die die Abbildung \( f \) beschreibt. Sie wird gebildet, indem die Bilder der Basisvektoren von \( V \) in Bezug auf die Basis von \( W \) dargestellt werden.
+
+    \subsection*{Verknüpfung von linearen Abbildungen}
+    Wenn \( f: V \to W \) und \( g: W \to U \) zwei lineare Abbildungen sind, dann ist die Verknüpfung \( g \circ f: V \to U \) ebenfalls eine lineare Abbildung.
+
+    \subsubsection*{Allgemein}
+    Die Matrix der Abbildung die zuerst aufgeführt wird, steht rechts ($f \circ g \implies A \cdot B$).
+
+    \subsubsection*{Spiegelung}
+    $S^2 = I$ (Identitätsmatrix), da Spiegelungen ihre eigene Inverse sind.
+
+    \subsubsection*{Projektion}
+    $P^2 = P$ (Projektion ist idempotent), da eine Projektion auf einen Unterraum ihre eigene Inverse ist.
+
+    \subsection*{Homogene Koordinaten}
+    Homogene Koordinaten erweitern die üblichen Koordinaten um eine zusätzliche Dimension, um affine Abbildungen (wie Translationen) in lineare Abbildungen umzuwandeln.
+    
+    Es wird ein zusätzlicher Parameter \( w \) eingeführt, sodass ein Punkt \( (x, y) \) in der Ebene als \( (x, y, w) \) dargestellt wird.
+\end{minipage}
+
+\subsection*{Beispiele von linearen Abbildungen}
+\begin{minipage}[t]{0.45\textwidth}
+    \subsubsection*{Ebene}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Abbildung} & \textbf{Matrix} \\
+        \hline
+        Drehung um den Ursprung & \( A = \begin{pmatrix}
+        \cos(\theta) & -\sin(\theta) \\
+        \sin(\theta) & \cos(\theta)
+        \end{pmatrix} \) \\
+        \hline
+        Streckung & \( A = \begin{pmatrix}
+        \lambda_1 & 0 \\
+        0 & \lambda_2
+        \end{pmatrix} \) \\
+        \hline
+        Spiegelung an der x-Achse & \( A = \begin{pmatrix}
+        1 & 0 \\
+        0 & -1
+        \end{pmatrix} \) \\
+        \hline
+        Spiegelung an der y-Achse & \( A = \begin{pmatrix}
+        -1 & 0 \\
+        0 & 1
+        \end{pmatrix} \) \\
+        \hline
+        Spiegelung an der Geraden \( y = x \) & \( A = \begin{pmatrix}
+        0 & 1 \\
+        1 & 0
+        \end{pmatrix} \) \\
+        \hline
+        Spiegelung an der Geraden \( y = -x \) & \( A = \begin{pmatrix}
+        0 & -1 \\
+        -1 & 0
+        \end{pmatrix} \) \\
+        \hline
+        Orthogonale Projektion auf die x-Achse & \( A = \begin{pmatrix}
+        1 & 0 \\
+        0 & 0
+        \end{pmatrix} \) \\
+        \hline
+        Orthogonale Projektion auf die y-Achse & \( A = \begin{pmatrix}
+        0 & 0 \\
+        0 & 1
+        \end{pmatrix} \) \\
+        \hline
+        Scherung in x-Richtung ($k = \tan(\theta)$) & \( A = \begin{pmatrix}
+        1 & k \\
+        0 & 1
+        \end{pmatrix} \) \\
+        \hline
+    \end{tabular}
+    }
+
+    \subsubsection*{Rotation im Raum um eine allgemeine Achse durch den Ursprung}
+    \resizebox{\textwidth}{!}{%
+    $\begin{pmatrix}
+        \cos(\theta) + n_1^2(1 - \cos(\theta)) & n_1n_2(1 - \cos(\theta)) - n_3\sin(\theta) & n_1n_3(1 - \cos(\theta)) + n_2\sin(\theta) \\
+        n_2n_1(1 - \cos(\theta)) + n_3\sin(\theta) & \cos(\theta) + n_2^2(1 - \cos(\theta)) & n_2n_3(1 - \cos(\theta)) - n_1\sin(\theta) \\
+        n_3n_1(1 - \cos(\theta)) - n_2\sin(\theta) & n_3n_2(1 - \cos(\theta)) + n_1\sin(\theta) & \cos(\theta) + n_3^2(1 - \cos(\theta))
+    \end{pmatrix}$
+    }
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+    \subsubsection*{Raum}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Abbildung} & \textbf{Matrix} \\
+        \hline
+        Drehung um den Ursprung & \( A = \begin{pmatrix}
+        \cos(\theta) & -\sin(\theta) & 0 \\
+        \sin(\theta) & \cos(\theta) & 0 \\
+        0 & 0 & 1
+        \end{pmatrix} \) \\
+        \hline
+        Streckung & \( A = \begin{pmatrix}
+        \lambda_1 & 0 & 0 \\
+        0 & \lambda_2 & 0 \\
+        0 & 0 & \lambda_3
+        \end{pmatrix} \) \\
+        \hline
+        Spiegelung an der xy-Ebene & \( A = \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & -1 & 0 \\
+        0 & 0 & -1
+        \end{pmatrix} \) \\
+        \hline
+        Spiegelung an der xz-Ebene & \( A = \begin{pmatrix}
+        -1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & -1
+        \end{pmatrix} \) \\
+        \hline
+        Spiegelung an der yz-Ebene & \( A = \begin{pmatrix}
+        -1 & 0 & 0 \\
+        0 & -1 & 0 \\
+        0 & 0 & 1
+        \end{pmatrix} \) \\
+        \hline
+        Scherung in x-Richtung (3D) & $A = \begin{pmatrix}
+        1 & k & l \\
+        0 & 1 & m \\
+        0 & 0 & 1
+        \end{pmatrix}$ \\
+        \hline
+        Scherung in y-Richtung (3D) & $A = \begin{pmatrix}
+        1 & 0 & l \\
+        k & 1 & m \\
+        0 & 0 & 1
+        \end{pmatrix}$ \\
+        \hline
+        Scherung in z-Richtung (3D) & $A = \begin{pmatrix}
+        1 & 0 & k \\
+        0 & 1 & l \\
+        m & 0 & 1
+        \end{pmatrix}$ \\
+        \hline
+        Orthogonale Projektion auf die xy-Ebene & \( A = \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 0
+        \end{pmatrix} \) \\
+        \hline
+        Orthogonale Projektion auf die xz-Ebene & \( A = \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & 0 & 0 \\
+        0 & 0 & 1
+        \end{pmatrix} \) \\
+        \hline
+        Orthogonale Projektion auf die yz-Ebene & \( A = \begin{pmatrix}
+        0 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+        \end{pmatrix} \) \\
+        \hline
+        Orthogonale Projektion auf die x-Achse & \( A = \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & 0 & 0 \\
+        0 & 0 & 0
+        \end{pmatrix} \) \\
+        \hline
+        Orthogonale Projektion auf die y-Achse & \( A = \begin{pmatrix}
+        0 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 0
+        \end{pmatrix} \) \\
+        \hline
+        Orthogonale Projektion auf die z-Achse & \( A = \begin{pmatrix}
+        0 & 0 & 0 \\
+        0 & 0 & 0 \\
+        0 & 0 & 1
+        \end{pmatrix} \) \\
+        \hline
+        Spiegelung an einer allgemeinen Ebene \\ durch den Ursprung & \( A = \begin{pmatrix}
+        1 - 2n_1^2 & -2n_1n_2 & -2n_1n_3 \\
+        -2n_1n_2 & 1 - 2n_2^2 & -2n_2n_3 \\
+        -2n_1n_3 & -2n_2n_3 & 1 - 2n_3^2
+        \end{pmatrix} \) \\
+        \hline
+        Rotation um die z-Achse & \( A = \begin{pmatrix}
+        \cos(\theta) & -\sin(\theta) & 0 \\
+        \sin(\theta) & \cos(\theta) & 0 \\
+        0 & 0 & 1
+        \end{pmatrix} \) \\
+        \hline
+        Rotation um die y-Achse & \( A = \begin{pmatrix}
+        \cos(\theta) & 0 & -\sin(\theta) \\
+        0 & 1 & 0 \\
+        \sin(\theta) & 0 & \cos(\theta)
+        \end{pmatrix} \) \\
+        \hline
+        Rotation um die x-Achse & \( A = \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & \cos(\theta) & -\sin(\theta) \\
+        0 & \sin(\theta) & \cos(\theta)
+        \end{pmatrix} \) \\
+        \hline
+    \end{tabular}
+    }
+\end{minipage}
 \end{document}

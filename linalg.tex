@@ -271,4 +271,70 @@ Punkten können wir dann eine Parameterdarstellung von $g$ gewinnen.
 \end{minipage}
 
 \section*{Ebenen}
+\begin{minipage}[t]{0.45\textwidth}
+    \subsection*{Parameterdarstellung}
+    Eine Ebene im Raum kann durch die Gleichung
+    \begin{equation*}
+        E: \vec{r}(P) + \lambda_1 \cdot \vec{a} + \lambda_2 \cdot \vec{b}
+    \end{equation*}
+    dargestellt werden, wobei \( \vec{r}(P) \) ein Punkt auf der Ebene ist und \( \vec{a} \) und \( \vec{b} \) zwei Richtungsvektoren der Ebene sind.
+    \subsection*{Koordinatendarstellung}
+    Eine Ebene kann auch in der Koordinatendarstellung angegeben werden:
+    \begin{equation*}
+        E: ax + by + cz + d = 0
+    \end{equation*}
+    Hierbei sind \( a, b, c \) die Komponenten des Normalenvektors der Ebene und \( d \) eine Konstante.
+
+    \subsection*{Abstand zwischen einer Ebene und einem Punkt}
+    Um den Abstand $l$ zu berechnen, gehen wir folgendermassen vor:
+    Wir wählen einen beliebigen Punkt $P$ der Ebene $E$ (rechts "im
+    Profil" abgebildet). Dann projizieren wir den Verbindungsvektor
+    $\overrightarrow{PA}$ auf den Normalenvektor $\vec{n}$ der Ebene. Die Länge dieser
+    Projektion ist gerade der gesuchte Abstand $l$.
+    \begin{equation*}
+        l = \frac{|ax_A + by_A + cz_A + d|}{|\vec{n}|}
+    \end{equation*}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+    \subsection*{Schnittpunkt Ebene und Gerade}
+    Der Schnittpunkt einer Ebene \( E \) und einer Geraden \( g \) kann mithilfe eines LGS gefunden werden. 
+    \begin{equation*}
+        E: \begin{pmatrix}
+            1 \\
+            0 \\
+            -2
+        \end{pmatrix} + \lambda \cdot \begin{pmatrix}
+            3 \\
+            -2 \\
+            1
+        \end{pmatrix} + \mu \cdot \begin{pmatrix}
+            0 \\
+            4 \\
+            3
+        \end{pmatrix}
+    \end{equation*}
+    \begin{equation*}
+        g: \begin{pmatrix}
+            1 \\
+            -3 \\
+            -4
+            \end{pmatrix} + v \cdot \begin{pmatrix}
+                -2 \\
+                1 \\
+                -1
+            \end{pmatrix}
+    \end{equation*}
+    Um den Schnittpunkt zu finden, setzen wir die Ebene und die Gerade gleich und lösen das entstehende LGS
+
+    \subsection*{Gegenseitige Lage von Ebenen}
+    \subsubsection*{identisch}
+    Zwei Ebenen sind identisch, wenn sie die gleiche Normalenvektor und den gleichen Stützpunkt haben.
+
+    \subsubsection*{echt parallel}
+    Zwei Ebenen sind echt parallel, wenn ihre Normalenvektoren kollinear sind, aber sie nicht identisch sind.
+    
+    \subsubsection*{schneidend}
+    In allen anderen Fällen schneiden sich die Ebenen. Der Schnittpunkt kann durch das Lösen eines LGS gefunden werden.
+\end{minipage}
 \end{document}

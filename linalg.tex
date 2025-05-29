@@ -67,6 +67,71 @@
     \end{align*}
 \end{minipage}
 
+\section*{Quadratische Matrizen}
+\begin{minipage}[t]{0.45\textwidth}
+    \subsection*{Inverse Matrix}
+    Eine Matrix \( A \) ist invertierbar / regulär, wenn es eine Matrix \( A^{-1} \) gibt, so dass \( A \cdot A^{-1} = I \), wobei \( I \) die Einheitsmatrix ist. Andernfalls ist sie singulär.
+    \subsubsection*{2x2 Matrix}
+    \begin{equation*}
+        A = \begin{pmatrix}
+        a & b \\
+        c & d
+        \end{pmatrix}, \quad
+        A^{-1} = \frac{1}{ad - bc} \begin{pmatrix}
+        d & -b \\
+        -c & a
+        \end{pmatrix}
+    \end{equation*}
+    \subsubsection*{Restliche Matrizen}
+    Eine Matrix \( A \) ist invertierbar, wenn ihr Determinant \( \det(A) \neq 0 \). Die Inverse kann mit dem Gauß-Jordan-Verfahren oder der adjungierten Matrix gefunden werden.
+    
+    \subsection*{Eigenschaften der Determinanten}
+    \begin{itemize}
+        \item \( \det(A^T) = \det(A) \)
+        \item \( \det(cA) = c^n \cdot \det(A) \) (für eine \( n \times n \) Matrix)
+        \item \( \det(AB) = \det(A) \cdot \det(B) \)
+        \item \( \det(A^{-1}) = \frac{1}{\det(A)} \)
+        \item \( \det(A + B) \neq \det(A) + \det(B) \) (im Allgemeinen)
+        \item \( \det(A) = 0 \) wenn \( A \) singulär ist (d.h. nicht invertierbar).
+        \item Höhe des Spans: $h = \frac{|\vec{a} \cdot (\vec{b} \times \vec{c})|}{|\vec{b} \times \vec{c}|}$
+    \end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+    \subsection*{Determinante}
+    Die Determinante einer Matrix \( A \) ist ein Skalar. Sie gibt an, ob die Matrix invertierbar ist und beschreibt das Volumen des von den Spaltenvektoren aufgespannten Parallelepipeds.
+    \subsubsection*{2x2 Matrix und 3x3 Matrix}
+     \begin{figure}[H]
+        \includegraphics[scale=0.4]{images/determinante.png}
+     \end{figure}
+
+    \subsection*{Allgemeine $n \times n$-Matrix}
+    Die Determinante einer \( n \times n \) Matrix kann durch Laplace-Entwicklung (für \( n > 3 \)) berechnet werden.
+    
+    
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Entwicklung nach der i-ten Zeile} & \textbf{Entwicklung nach der j-ten Spalte} \\
+        \hline
+        $\det(A) = \sum_{j=1}^{n} (-1)^{i+j} a_{ij} \det(A_{ij})$ 
+        &
+        $\det(A) = \sum_{i=1}^{n} (-1)^{i+j} a_{ij} \det(A_{ij})$
+        \\
+        \hline
+    \end{tabular}
+    }
+    Die folgenden Aussagen sind äquivalent:
+    \begin{itemize}
+        \item $det(A) \neq 0$ 
+        \item Die Spaltenvektoren von $A$ sind linear unabhängig.
+        \item Die Zeilenvektoren von $A$ sind linear unabhängig.
+        \item $rg(A) = n$
+        \item $A$ ist invertierbar.
+        \item Das LGS $A \cdot \vec{x} = \vec{b}$ hat eine eindeutige Lösung.
+    \end{itemize}
+\end{minipage}
+
 \section*{Lineare Gleichungssysteme}
 \begin{minipage}[t]{0.45\textwidth}
     \subsection*{Zeilenstufenform}

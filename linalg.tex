@@ -298,14 +298,17 @@ In diesem Beispiel sind $x_1$ und $x_3$ die führenden Unbekannten, während $x_
     Der Abstand \( d \) zwischen einer Geraden \( g \) und einem Punkt \( P \) kann mithilfe der Fläche des Parallelogramms berechnet werden, 
     das von den Richtungsvektoren der Geraden und dem Vektor vom Punkt auf die Gerade aufgespannt wird:
     \begin{equation*}
-        \overrightarrow{PA} = \vec{P} - \vec{A}
+        g: \vec{r}(A) + \lambda \cdot \vec{a}
+    \end{equation*}
+    \begin{equation*}
+        \overrightarrow{PA} = \vec{P} - \vec{r}(A)
     \end{equation*}
     \begin{equation*}
         F = |\overrightarrow{PA} \times \vec{a}|
         \quad \text{(Fläche des Parallelogramms)}
     \end{equation*}
     \begin{equation*}
-        l = \frac{F}{|\vec{a}|}
+        d = \frac{F}{|\vec{a}|}
         \quad \text{(Länge der Geraden)}
     \end{equation*}
 \end{minipage}
@@ -336,6 +339,11 @@ Punkten können wir dann eine Parameterdarstellung von $g$ gewinnen.
 
 \section*{Ebenen}
 \begin{minipage}[t]{0.45\textwidth}
+    \subsection*{Normalenvektor}
+    Der Normalenvektor \( \vec{n} \) einer Ebene ist ein Vektor, der orthogonal zu allen Richtungsvektoren der Ebene steht. Er kann aus zwei Richtungsvektoren \( \vec{a} \) und \( \vec{b} \) der Ebene berechnet werden:
+    \begin{equation*}
+        \vec{n} = \vec{a} \times \vec{b}
+    \end{equation*}
     \subsection*{Parameterdarstellung}
     Eine Ebene im Raum kann durch die Gleichung
     \begin{equation*}
@@ -390,6 +398,8 @@ Punkten können wir dann eine Parameterdarstellung von $g$ gewinnen.
             \end{pmatrix}
     \end{equation*}
     Um den Schnittpunkt zu finden, setzen wir die Ebene und die Gerade gleich und lösen das entstehende LGS
+
+    \textbf{Oder} mit Koordinatendarstellung, indem wir die Koordinatengleichung der Gerade in die Koordinatengleichung der Ebene einsetzen und das entstehende LGS lösen.
 
     \subsection*{Gegenseitige Lage von Ebenen}
     \subsubsection*{identisch}
@@ -484,6 +494,12 @@ Punkten können wir dann eine Parameterdarstellung von $g$ gewinnen.
         dim(ker(f)) + dim(Im(f)) = n
     \end{equation*}
 
+    \subsubsection*{Bestimmen der Basis des Kerns}
+    Um den Kern einer linearen Abbildung \( f \) zu bestimmen, setzen wir die Darstellungsmatrix \( f(\vec{v}) = \vec{0} \) und lösen das entstehende LGS.
+
+    \subsubsection*{Bestimmen der Basis des Bildes}
+    Um das Bild einer linearen Abbildung \( f \) zu bestimmen, bilden wir die Darstellungsmatrix und nehmen die Spalten, die linear unabhängig sind (Gauss auf Darstellungsmatrix). Diese Spalten bilden eine Basis des Bildes.
+
     \subsection*{Basenwechsel}
     Wenn \( \mathcal{B} \) eine Basis von \( V \) und \( \mathcal{S} \) eine Basis von \( W \) ist, dann kann die lineare Abbildung \( f \) in Bezug auf diese Basen dargestellt werden.
 
@@ -510,6 +526,21 @@ Punkten können wir dann eine Parameterdarstellung von $g$ gewinnen.
     Die Abbildungsmatrix \( A \) einer linearen Abbildung \( f \) bezüglich der Basen \( \mathcal{B} \) von \( V \) und \( \mathcal{S} \) von \( W \) ist die Matrix, 
     die die Abbildung \( f \) beschreibt. Sie wird gebildet, indem die Bilder der Basisvektoren von \( V \) in Bezug auf die Basis von \( W \) dargestellt werden.
 
+    \subsubsection*{Darstellungsmatrix}
+    Die Darstellungsmatrix \( A \) einer linearen Abbildung sieht wie folgt aus:
+    \begin{equation*}
+        \begin{pmatrix}
+            x + y + 2z \\
+            2x - y + z \\
+            3x + 4y - z
+        \end{pmatrix}
+        \Rightarrow
+        \begin{pmatrix}
+            1 & 1 & 2 \\
+            2 & -1 & 1 \\
+            3 & 4 & -1
+        \end{pmatrix}
+    \end{equation*}
     \subsection*{Verknüpfung von linearen Abbildungen}
     Wenn \( f: V \to W \) und \( g: W \to U \) zwei lineare Abbildungen sind, dann ist die Verknüpfung \( g \circ f: V \to U \) ebenfalls eine lineare Abbildung.
 
@@ -564,6 +595,11 @@ Punkten können wir dann eine Parameterdarstellung von $g$ gewinnen.
         Spiegelung an der Geraden \( y = -x \) & \( A = \begin{pmatrix}
         0 & -1 \\
         -1 & 0
+        \end{pmatrix} \) \\
+        \hline
+        Spiegelung an der Geraden \( ax + by + c = 0 \) & \( A = \begin{pmatrix}
+        1 - 2a^2 & -2ab \\
+        -2ab & 1 - 2b^2
         \end{pmatrix} \) \\
         \hline
         Orthogonale Projektion auf die x-Achse & \( A = \begin{pmatrix}
@@ -685,11 +721,8 @@ Punkten können wir dann eine Parameterdarstellung von $g$ gewinnen.
         0 & 0 & 1
         \end{pmatrix} \) \\
         \hline
-        Spiegelung an einer allgemeinen Ebene \\ durch den Ursprung & \( A = \begin{pmatrix}
-        1 - 2n_1^2 & -2n_1n_2 & -2n_1n_3 \\
-        -2n_1n_2 & 1 - 2n_2^2 & -2n_2n_3 \\
-        -2n_1n_3 & -2n_2n_3 & 1 - 2n_3^2
-        \end{pmatrix} \) \\
+        Spiegelung an einer allgemeinen Ebene & \( \vec{n}_0 = \text{Länge 1} \) \\ 
+        durch den Ursprung & \( A = I - 2 \cdot \vec{n}_0 \cdot \vec{n}^T_0 \) \\
         \hline
         Rotation um die z-Achse & \( A = \begin{pmatrix}
         \cos(\theta) & -\sin(\theta) & 0 \\

@@ -12,7 +12,6 @@
 \textbf{\LARGE Lineare Algebra}
 \end{center}
 
-\section*{Matrizen}
 \begin{minipage}[t]{0.45\textwidth}
     \begin{align*}
         A &= \begin{pmatrix}
@@ -99,9 +98,12 @@
 \begin{minipage}[t]{0.45\textwidth}
     \subsection*{Determinante}
     Die Determinante einer Matrix \( A \) ist ein Skalar. Sie gibt an, ob die Matrix invertierbar ist und beschreibt das Volumen des von den Spaltenvektoren aufgespannten Parallelepipeds.
+
+    \subsubsection*{Dreiecksmatrizen}
+    Die Determinante einer Dreiecksmatrix (obere oder untere) ist das Produkt der Diagonalelemente
     \subsubsection*{2x2 Matrix und 3x3 Matrix}
      \begin{figure}[H]
-        \includegraphics[scale=0.4]{images/determinante.png}
+        \includegraphics[scale=0.3]{images/determinante.png}
      \end{figure}
 
     \subsection*{Allgemeine $n \times n$-Matrix}
@@ -113,9 +115,9 @@
         \hline
         \textbf{Entwicklung nach der i-ten Zeile} & \textbf{Entwicklung nach der j-ten Spalte} \\
         \hline
-        $\det(A) = \sum_{j=1}^{n} (-1)^{i+j} a_{ij} \det(A_{ij})$ 
+        $\det(A) = \sum_{j=1}^{n} (-1)^{i+j} a_{ij} \cdot \det(A_{ij})$ 
         &
-        $\det(A) = \sum_{i=1}^{n} (-1)^{i+j} a_{ij} \det(A_{ij})$
+        $\det(A) = \sum_{i=1}^{n} (-1)^{i+j} a_{ij} \cdot \det(A_{ij})$
         \\
         \hline
     \end{tabular}
@@ -401,6 +403,11 @@ Punkten können wir dann eine Parameterdarstellung von $g$ gewinnen.
 
     \textbf{Oder} mit Koordinatendarstellung, indem wir die Koordinatengleichung der Gerade in die Koordinatengleichung der Ebene einsetzen und das entstehende LGS lösen.
 
+    \subsection*{Winkel zwischen Ebene und Gerade}
+    Der Winkel zwischen einer Ebene \( E \) und einer Geraden \( g \) kann mit dem Normalenvektor der Ebene \( \vec{n} \) und dem Richtungsvektor der Geraden \( \vec{a} \) berechnet werden
+    (Siehe Winkel zwischen Vektoren: ergibt  \( \theta \))
+    
+    Zum Schluss noch $ 90^\circ - \theta$ rechnen, da der Normalenvektor der Ebene orthogonal zur Ebene steht.
     \subsection*{Gegenseitige Lage von Ebenen}
     \subsubsection*{identisch}
     Zwei Ebenen sind identisch, wenn sie die gleiche Normalenvektor und den gleichen Stützpunkt haben.
@@ -441,9 +448,37 @@ Punkten können wir dann eine Parameterdarstellung von $g$ gewinnen.
     \subsubsection*{Basis $\mathcal{S} \to$ Basis $\mathcal{B}$}
     Um von einer Basis \( \mathcal{S} \) zu einer Basis \( \mathcal{B} \) zu wechseln, nutzen wir ein LGS:
     \begin{equation*}
-        \vec{a}_{\mathcal{B}} = w_1 \cdot \vec{s}_1 + w_2 \cdot \vec{s}_2 + \ldots + w_n \cdot \vec{s}_n
+        \mathcal{B} = \begin{pmatrix}
+            1 \\
+            2 \\
+            \end{pmatrix}, \begin{pmatrix}
+                3 \\
+                -4 \\
+            \end{pmatrix}
     \end{equation*}
-    $s_{1 \ldots s_n}$ sind die Basisvektoren der Basis $\mathcal{B}$, $w_1 \ldots w_n$ sind die Komponenten des Vektors in der Basis $\mathcal{S}$.
+    \begin{equation*}
+        \vec{a}_{\mathcal{S}} = \begin{pmatrix}
+            a_1 \\
+            a_2
+        \end{pmatrix}_{\mathcal{S}}
+        = \begin{pmatrix}
+            1 & 3 \\
+            2 & -4
+        \end{pmatrix}
+        \cdot
+        \begin{pmatrix}
+            w_1 \\
+            w_2
+        \end{pmatrix}
+    \end{equation*}
+    \begin{equation*}
+        \Rightarrow
+        \begin{pmatrix}
+            1 & 3 & | & a_1 \\
+            2 & -4 & | & a_2
+        \end{pmatrix}
+    \end{equation*}
+    Hierbei sind \( w_1 \) und \( w_2 \) die Komponenten des Vektors in der Basis \( \mathcal{B} \) und $\vec{a}_{\mathcal{S}} $ die Komponenten des Vektors in der Basis \( \mathcal{S} \).
 
 \end{minipage}
 \hfill
@@ -453,6 +488,23 @@ Punkten können wir dann eine Parameterdarstellung von $g$ gewinnen.
     
     \subsection*{Basis und Dimension}
     Eine Basis eines Vektorraums ist eine Menge von linear unabhängigen Vektoren, die den gesamten Raum aufspannen. Die Dimension des Vektorraums ist die Anzahl der Vektoren in einer Basis.
+
+    Beispiel für eine Basis von $\begin{pmatrix}
+        a & b \\
+        c & -c
+    \end{pmatrix}$:
+    \begin{equation*}
+        \mathcal{B} = \left\{ \begin{pmatrix}
+        1 & 0 \\
+        0 & 0
+        \end{pmatrix}, \begin{pmatrix}
+        0 & 1 \\
+        0 & 0
+        \end{pmatrix}, \begin{pmatrix}
+        0 & 0 \\
+        1 & -1
+        \end{pmatrix} \right\}
+    \end{equation*}
 
     \subsection*{Erzegendensyteme}
     Ein Erzeugendensystem eines Vektorraums ist eine Menge von Vektoren, deren Linearkombinationen den gesamten Raum aufspannen. Es kann mehr Vektoren enthalten als eine Basis, aber nicht weniger.
@@ -470,6 +522,8 @@ Punkten können wir dann eine Parameterdarstellung von $g$ gewinnen.
         c_1 \vec{v}_1 + c_2 \vec{v}_2 + \ldots + c_n \vec{v}_n = 0
     \end{equation*}
     nur die triviale Lösung \( c_1 = c_2 = \ldots = c_n = 0 \) hat. Andernfalls sind die Vektoren linear abhängig.
+
+    Falls der Rang der Matrix $A$ kleiner als die Anzahl der Spalten (Vektoren $v_1, \ldots, v_n$) ist, sind die Spaltenvektoren linear abhängig.
 \end{minipage}
 
 \pagebreak
@@ -480,7 +534,7 @@ Punkten können wir dann eine Parameterdarstellung von $g$ gewinnen.
     Eine lineare Abbildung \( f: V \to W \) zwischen zwei Vektorräumen \( V \) und \( W \) ist eine Funktion, die die folgenden Eigenschaften erfüllt:
     \begin{itemize}
         \item \( f(\vec{u} + \vec{v}) = f(\vec{u}) + f(\vec{v}) \) für alle \( \vec{u}, \vec{v} \in V \)
-        \item $\lambda \cdot \vec{v} = \lambda \cdot f(\vec{v})$ für alle \( c \in \mathbb{R} \) und \( \vec{v} \in V \)
+        \item $\lambda \cdot \vec{v} = \lambda \cdot f(\vec{v})$ für alle \( \lambda \in \mathbb{R} \) und \( \vec{v} \in V \)
     \end{itemize}
 
     \subsection*{Kern und Bild}
@@ -498,7 +552,7 @@ Punkten können wir dann eine Parameterdarstellung von $g$ gewinnen.
     Um den Kern einer linearen Abbildung \( f \) zu bestimmen, setzen wir die Darstellungsmatrix \( f(\vec{v}) = \vec{0} \) und lösen das entstehende LGS.
 
     \subsubsection*{Bestimmen der Basis des Bildes}
-    Um das Bild einer linearen Abbildung \( f \) zu bestimmen, bilden wir die Darstellungsmatrix und nehmen die Spalten, die linear unabhängig sind (Gauss auf Darstellungsmatrix). Diese Spalten bilden eine Basis des Bildes.
+    Um das Bild einer linearen Abbildung \( f \) zu bestimmen, bilden wir die Darstellungsmatrix und nehmen die Spalten, die linear unabhängig sind. Diese Spalten bilden eine Basis des Bildes.
 
     \subsection*{Basenwechsel}
     Wenn \( \mathcal{B} \) eine Basis von \( V \) und \( \mathcal{S} \) eine Basis von \( W \) ist, dann kann die lineare Abbildung \( f \) in Bezug auf diese Basen dargestellt werden.
@@ -526,7 +580,7 @@ Punkten können wir dann eine Parameterdarstellung von $g$ gewinnen.
     Die Abbildungsmatrix \( A \) einer linearen Abbildung \( f \) bezüglich der Basen \( \mathcal{B} \) von \( V \) und \( \mathcal{S} \) von \( W \) ist die Matrix, 
     die die Abbildung \( f \) beschreibt. Sie wird gebildet, indem die Bilder der Basisvektoren von \( V \) in Bezug auf die Basis von \( W \) dargestellt werden.
 
-    \subsubsection*{Darstellungsmatrix}
+    \subsubsection*{Darstellungs-, bzw. Abbildungsmatrix}
     Die Darstellungsmatrix \( A \) einer linearen Abbildung sieht wie folgt aus:
     \begin{equation*}
         \begin{pmatrix}
@@ -587,17 +641,17 @@ Punkten können wir dann eine Parameterdarstellung von $g$ gewinnen.
         0 & 1
         \end{pmatrix} \) \\
         \hline
-        Spiegelung an der Geraden \( y = x \) & \( A = \begin{pmatrix}
+        Spiegelung an der Geraden (normalisiert) \( y = x \) & \( A = \begin{pmatrix}
         0 & 1 \\
         1 & 0
         \end{pmatrix} \) \\
         \hline
-        Spiegelung an der Geraden \( y = -x \) & \( A = \begin{pmatrix}
+        Spiegelung an der Geraden (normalisiert) \( y = -x \) & \( A = \begin{pmatrix}
         0 & -1 \\
         -1 & 0
         \end{pmatrix} \) \\
         \hline
-        Spiegelung an der Geraden \( ax + by + c = 0 \) & \( A = \begin{pmatrix}
+        Spiegelung an der Geraden (normalisiert) & \\ \( ax + by + c = 0 \) & \( A = \begin{pmatrix}
         1 - 2a^2 & -2ab \\
         -2ab & 1 - 2b^2
         \end{pmatrix} \) \\
